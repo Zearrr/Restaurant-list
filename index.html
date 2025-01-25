@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisafea</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ลิสเฟีย</h1>
+    </header>
+    <nav>
+        <button class="category active" onclick="showMenu('food')">อาหาร</button>
+        <button class="category" onclick="showMenu('dessert')">ของหวาน</button>
+        <button class="category" onclick="showMenu('drink')">เครื่องดื่ม</button>
+    </nav>
+    <div class="container">
+        <div id="food" class="menu active">
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/กะเพราะไก่.jpg" alt="กะเพราไก่">
+                <div class="menu-item-details">
+                    <h3>กะเพราไก่</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/คั้วกลิ้งไก่.jpg" alt="คั้วกลิ้งไก่">
+                <div class="menu-item-details">
+                    <h3>คั้วกลิ้งไก่</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/ไก่เชียง.jpg" alt="ไก่เชียง">
+                <div class="menu-item-details">
+                    <h3>ไก่เชียง</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/พะโล้ไก่.jpg" alt="พะโล้">
+                <div class="menu-item-details">
+                    <h3>พะโล้</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/ปลาทูทอด.jpg" alt="ปลาทูทอด">
+                <div class="menu-item-details">
+                    <h3>ปลาทูทอด</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/แกงส้มลานิล.jpg" alt="แกงปลานิล">
+                <div class="menu-item-details">
+                    <h3>แกงปลานิล</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/แกงส้มกุ้ง.jpg" alt="แกงส้มกุ้ง">
+                <div class="menu-item-details">
+                    <h3>แกงส้มกุ้ง</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/แกงเนื้อ.jpg" alt="แกงเนื้อ">
+                <div class="menu-item-details">
+                    <h3>แกงเนื้อ</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการอาหาร -->
+            <div class="menu-item">
+                <img src="images/ผัดเผ็ดปลาดุก.jpg" alt="ผัดเผ็ดปลาดุก">
+                <div class="menu-item-details">
+                    <h3>ผัดเผ็ดปลาดุก</h3>
+                    <p class="price">฿40.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+        </div>
+        <div id="dessert" class="menu">
+            <!-- รายการของหวาน -->
+            <div class="menu-item">
+                <img src="images/น้ำเต้าเชื่อม.jpg" alt="น้ำเต้าเชื่อม">
+                <div class="menu-item-details">
+                    <h3>น้ำเต้าเชื่อม</h3>
+                    <p class="price">฿30.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการของหวาน -->
+            <div class="menu-item">
+                <img src="images/กล้วยเชื่อม.jpg" alt="กล้วยเชื่อม">
+                <div class="menu-item-details">
+                    <h3>กล้วยเชื่อม</h3>
+                    <p class="price">฿30.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการของหวาน -->
+            <div class="menu-item">
+                <img src="images/บวดข้าวโพด.jpg" alt="ข้าวโพดบวด">
+                <div class="menu-item-details">
+                    <h3>ข้าวโพดบวด</h3>
+                    <p class="price">฿30.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการของหวาน -->
+            <div class="menu-item">
+                <img src="images/ถั่วดำ.jpg" alt="ถั่วดำ">
+                <div class="menu-item-details">
+                    <h3>ถั่วดำ</h3>
+                    <p class="price">฿30.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+            <!-- รายการของหวาน -->
+            <div class="menu-item">
+                <img src="images/ข้าวต้มมัด.jpg" alt="ข้าวต้มมัด">
+                <div class="menu-item-details">
+                    <h3>ข้าวต้มมัด</h3>
+                    <p class="price">฿30.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+        </div>
+        <div id="drink" class="menu">
+            <!-- รายการเครื่องดื่ม -->
+            <div class="menu-item">
+                <img src="images/น้ำโค้ก.jpg" alt="น้ำโค้ก">
+                <div class="menu-item-details">
+                    <h3>น้ำโค้ก</h3>
+                    <p class="price">฿20.00</p>
+                </div>
+                <div class="menu-item-controls">
+                    <button onclick="decrement(this)">-</button>
+                    <span class="quantity">1</span>
+                    <button onclick="increment(this)">+</button>
+                    <button class="add-to-cart">🛒</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <button class="cart">🛒</button>
+        <button class="confirm">ยืนยัน</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
