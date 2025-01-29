@@ -1,12 +1,14 @@
+/* ====== พื้นฐานของเว็บไซต์ ====== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f5f5f5;
 }
 
+/* ====== ส่วนหัว ====== */
 header {
     background-color: #ff9800;
-    color: rgba(255, 255, 255, 0.751);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding: 10px 0;
     font-size: 20px;
@@ -14,7 +16,7 @@ header {
     font-weight: bold;
 }
 
-
+/* ====== เมนูนำทาง ====== */
 nav {
     display: flex;
     justify-content: center;
@@ -38,6 +40,7 @@ nav button.active, nav button:hover {
     background-color: #fb8c00;
 }
 
+/* ====== ส่วนของเนื้อหา ====== */
 .container {
     padding: 20px;
 }
@@ -52,6 +55,7 @@ nav button.active, nav button:hover {
     display: block;
 }
 
+/* ====== รายการอาหาร ====== */
 .menu-item {
     display: flex;
     align-items: center;
@@ -62,7 +66,7 @@ nav button.active, nav button:hover {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-/* กำหนดขนาดรูปสินค้า */
+
 .menu-item img {
     width: 120px;
     height: 80px;
@@ -86,12 +90,13 @@ nav button.active, nav button:hover {
     color: #ff9800;
 }
 
+/* ====== ปุ่มควบคุมรายการ ====== */
 .menu-item-controls {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-/* กำหนดพวกปุ่มในรายการอาหาร */
+
 .menu-item-controls button {
     border: none;
     background-color: #ff9800;
@@ -110,127 +115,121 @@ nav button.active, nav button:hover {
 .menu-item-controls button:hover {
     background-color: #fb8c00;
 }
-/*รถเข็นขวาล่าง*/
+
+/* ====== รถเข็นมุมล่าง ====== */
 #cart-button {
     position: fixed;
     bottom: 20px;
     left: 20px;
     background-color: #ff9800;
     color: white;
-    padding: 5px 10px;
+    padding: 10px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 20px;
     z-index: 1000;
 }
-/*กำหนดในตระกร้า*/
+
+/* ====== หน้าต่างตะกร้า ====== */
 #cart-window {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px -2px 10px rgba(60, 184, 29, 0.2);
+    background-color: white;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* จัดทุกสิ่งให้อยู่กลางในแนวนอน */
-    justify-content: flex-start; /* เริ่มต้นจากขอบบน */
+    align-items: center;
+    justify-content: flex-start;
     z-index: 999;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-#cart-window .cart-item {
+#cart-window.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ====== รายการในตะกร้า ====== */
+.cart-item {
     display: flex;
-    align-items: center; /* จัดข้อความและรูปภาพให้อยู่ตรงกลางในแนวตั้ง */
-    justify-content: space-between; /* จัดรายการอาหารและปุ่มลบให้ห่างกัน */
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
-    width: 100%; /* ให้ไอเท็มเต็มความกว้าง */
+    width: 100%;
 }
 
-#cart-window .cart-item img {
-    width: 100%; /* ขยายขนาดของรูปภาพ */
-    height: 100%; /* ขยายขนาดของรูปภาพ */
-    object-fit: cover; /* ให้รูปภาพครอบเต็มพื้นที่โดยไม่ผิดสัดส่วน */
-    border-radius: 5px; /* ทำให้มุมของรูปภาพมน */
-    margin-right: 25px; /* ให้ระยะห่างระหว่างรูปภาพและข้อความ */
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 15px;
 }
 
-#cart-window .cart-item .details {
-    flex: 1; /* ขยายข้อความให้เต็มพื้นที่ */
-    text-align: left; /* จัดข้อความให้อยู่ทางซ้าย */
+.cart-item .cart-item-details {
+    flex: 1;
+    text-align: left;
 }
 
-#cart-window .cart-item button {
-    background-color: #ff9800; /* สีพื้นหลังของปุ่ม */
-    color: white; /* สีข้อความในปุ่ม */
+.cart-item button {
+    background-color: #ff9800;
+    color: white;
     border: none;
     padding: 8px 12px;
     font-size: 14px;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 10px; /* ให้ปุ่มลบห่างจากข้อความ */
+    margin-left: 10px;
 }
 
-#cart-window .cart-item button:hover {
-    background-color: #fb8c00; /* เปลี่ยนสีเมื่อ hover */
+.cart-item button:hover {
+    background-color: #fb8c00;
 }
 
-.cart-total {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center; /* จัดข้อความให้อยู่กลาง */
+/* ====== ปุ่มในหน้าตะกร้า ====== */
+/* ปรับขนาดของปุ่มทั้งหมด */
+.cart-buttons button {
+    flex: 1;
+    padding: 12px; /* เพิ่ม padding เพื่อเพิ่มขนาด */
+    font-size: 15px; /* ปรับขนาดตัวอักษร */
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.cart-total span {
-    color: #ff9800;
-}
-
-#cart-window button {
-    border: none;
+/* ปรับขนาดของปุ่ม cancel */
+.cancel-button {
     background-color: #ff9800;
     color: white;
-    padding: 8px 12px;  /* ลดขนาด padding */
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 12px;  /* ลดขนาด font-size */
-    transition: background-color 0.2s;
-    margin-top: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
-    width: 60%;  /* ทำให้ปุ่มกว้างน้อยลง */
-    text-align: center;
+    font-size: 15px; /* ขนาดตัวอักษรของปุ่ม cancel */
+    border: none; /* ลบขอบออก */
+    padding: 12px 20px; /* เพิ่ม padding ของปุ่ม cancel */
 }
 
-/* ปรับขนาดปุ่ม "ลบ" */
-.menu-item-controls button {
-    padding: 6px 10px;  /* ลดขนาด padding */
-    font-size: 14px;  /* ลดขนาด font-size */
-    width: 30px; /* ปรับให้ปุ่มลบมีขนาดเล็กลง */
-    height: 30px; /* ปรับความสูงของปุ่ม */
+/* ปรับขนาดของปุ่ม pay */
+.pay-button {
+    background-color: #ff9800;
+    color: white;
+    font-size: 15px; /* ขนาดตัวอักษรของปุ่ม pay */
+    border: none; /* ลบขอบออก */
+    padding: 12px 20px; /* เพิ่ม padding ของปุ่ม pay */
 }
 
-/* ปรับขนาดปุ่ม "ยกเลิกออเดอร์" และ "ชำระเงิน" ให้น้อยลง */
-.buttons-container {
-    display: flex;  /* ใช้ Flexbox เพื่อจัดปุ่มให้อยู่ในบรรทัดเดียว */
-    justify-content: center;  /* จัดปุ่มให้อยู่กลาง */
-    gap: 10px;  /* กำหนดระยะห่างระหว่างปุ่ม */
-    margin-top: 20px;  /* เพิ่มระยะห่างจากด้านบน */
-}
 
-.buttons-container button {
-    padding: 8px 12px;  /* ขนาดของปุ่ม */
-    font-size: 12px;  /* ขนาดตัวอักษร */
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
+/* ====== ส่วนท้าย ====== */
 footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     padding: 10px 20px;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;

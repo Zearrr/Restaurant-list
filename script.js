@@ -13,6 +13,9 @@ function showMenu(category) {
 function increment(button) {
     const quantityElement = button.previousElementSibling;
     quantityElement.textContent = parseInt(quantityElement.textContent) + 1;
+
+    // เพิ่มสินค้าเข้าไปในตะกร้า
+    addToCart(button);
 }
 
 // ฟังก์ชันลดจำนวน
@@ -22,6 +25,9 @@ function decrement(button) {
     if (currentQuantity > 1) {
         quantityElement.textContent = currentQuantity - 1;
     }
+
+    // เพิ่มสินค้าเข้าไปในตะกร้า
+    addToCart(button);
 }
 
 // ฟังก์ชันเพิ่มสินค้าลงในตะกร้า
@@ -35,7 +41,7 @@ function addToCart(button) {
     // ตรวจสอบว่ามีสินค้าในตะกร้าอยู่แล้วหรือไม่
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
-        existingItem.quantity += quantity; // ถ้ามีอยู่แล้วเพิ่มจำนวน
+        existingItem.quantity = quantity; // อัปเดตจำนวนสินค้าใหม่
     } else {
         cart.push({ name, price, quantity, image }); // ถ้ายังไม่มีให้เพิ่มเข้าไป
     }
@@ -46,6 +52,8 @@ function addToCart(button) {
 // ฟังก์ชันอัปเดตตะกร้า
 function updateCart() {
     const cartItemsContainer = document.getElementById("cart-items");
+    const cartTotalElement = document.getElementById("cart-total");
+
     cartItemsContainer.innerHTML = ""; // ล้างข้อมูลเดิมก่อนแสดงผลใหม่
     let total = 0;
 
@@ -55,17 +63,37 @@ function updateCart() {
         const cartItem = document.createElement("div");
         cartItem.classList.add("cart-item");
         cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px;"> <!-- รูปภาพสินค้า -->
-            <div class="cart-item-details">
-                <h4>${item.name}</h4>
-                <p>฿${item.price} x ${item.quantity} = ฿${(item.price * item.quantity).toFixed(2)}</p>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 5px;">
+                <div style="flex: 1;">
+                    <h4 style="margin: 0;">${item.name}</h4>
+                    <p style="margin: 0; color: gray;">฿${item.price} x ${item.quantity} = ฿${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <button onclick="decreaseQuantity(${index})" style="padding: 5px;">-</button>
+                    <button onclick="increaseQuantity(${index})" style="padding: 5px;">+</button>
+                    <button onclick="removeFromCart(${index})" style="padding: 5px;">ลบ</button>
+                </div>
             </div>
-            <button onclick="removeFromCart(${index})">ลบ</button>
         `;
         cartItemsContainer.appendChild(cartItem);
     });
 
-    document.getElementById("cart-total").textContent = `฿${total.toFixed(2)}`;
+    cartTotalElement.textContent = `฿${total.toFixed(2)}`;
+}
+
+// ฟังก์ชันลดจำนวนสินค้าในตะกร้า
+function decreaseQuantity(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    }
+    updateCart();
+}
+
+// ฟังก์ชันเพิ่มจำนวนสินค้าในตะกร้า
+function increaseQuantity(index) {
+    cart[index].quantity += 1;
+    updateCart();
 }
 
 // ฟังก์ชันลบสินค้าออกจากตะกร้า
@@ -93,5 +121,5 @@ function checkout() {
 // ฟังก์ชันเปิด/ปิดหน้าตะกร้า
 function toggleCart() {
     const cartWindow = document.getElementById("cart-window");
-    cartWindow.style.display = cartWindow.style.display === "block" ? "none" : "block";
+    cartWindow.classList.toggle("active");
 }
